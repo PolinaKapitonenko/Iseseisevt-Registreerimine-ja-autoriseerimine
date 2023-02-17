@@ -1,35 +1,45 @@
 ﻿from random import*
 import string
-def salasona(k: int):
-    sala=""
+from random import *
+import string
+def salasona(k: int)->bool:
+    """
+    Määrme salasõna..
+    :parem int k:Järjend salasõna numbridest
+    :rtype: bool
+    """
+    saladus=""
     for i in range(k):
-        t=choice(string.ascii_letters)
+        t=choice(string.ascii_letters) #Aa...Zz
         num=choice([1,2,3,4,5,6,7,8,9,0])
         sym=choice(["*","-",".","!","_"])
         t_num=[t,str(num),sym]
         saladus+=choice(t_num)
     return saladus
 
-def Registereerimine(l:list,p:list):
-    nimi=input("Sisesta oma nimi:")
-    v=int(input("1-Ese koostan parooli/n2-Arvuti genireebib/n"))
-    if v==1:
-        pass
-    else:
-        salasona=salasona(5)
-        l.append(nimi)
-        p.append(salasona)
-        return l,p
+def registreerimine(logt:list, pas:str)->bool:
+    """
+    Määrme reg..
+    :parem logt list, pas str:Järjend salasõna numbridest
+    :rtype: bool
+    """
+    n=input("Kirjuta oma nimi: ")
+    tehe=int(input("2-Määrake oma parool, 1-Looge see juhuslikult\n "))
 
+    if tehe==1:
+        salasona=salasona(12)
+        logt.append(n)
+        pas.append(salasona)
+ 
 
-def Autoriseerimine(l:list,p:list):
-    nimi=input("Sisesta oma nimi:")
-    salasona=input("Sisesta oma salasõna:")
-    if nimi in l:
-        ind=l.index(nimi)
-        if salasona==p[ind]:
-            print("Tere tulemast!")
-        else:
-            print("Vale salasõma!")
-    else:
-        print("Nimi ei ole nimekirjas!")
+    elif tehe==2:
+       pas=input("Kirjutage oma parool: ")
+       if any(c.islower() for c in pas) and any(c.isupper() for c in pas) and any(c.isdigit() for c in pas) and any(c in '.,:;!_*-+()/#¤%&' for c in pas):
+            print("Olete loonud parooli")
+            logt.append(n)
+            pas.append(str(salasona))
+       else:
+            print("Viga!!!")
+        
+       
+    return logt,pas
