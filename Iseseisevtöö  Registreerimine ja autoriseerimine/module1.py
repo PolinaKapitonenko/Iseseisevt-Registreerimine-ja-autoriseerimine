@@ -17,10 +17,10 @@ def salasona(k: int)->bool:
         saladus+=choice(t_num)
     return saladus
 
-def registreerimine(logt:list, pas:str)->bool:
+def registreerimine(log:list, parool:str)->bool:
     """
     Määrme reg..
-    :parem logt list, pas str:Järjend salasõna numbridest
+    :parem log list, pas str:Järjend salasõna numbridest
     :rtype: bool
     """
     n=input("Kirjuta oma nimi: ")
@@ -28,18 +28,18 @@ def registreerimine(logt:list, pas:str)->bool:
 
     if tehe==1:
         salasona=salasona(12)
-        logt.append(n)
-        pas.append(salasona)
+        log.append(n)
+        parool.append(salasona)
  
 
     elif tehe==2:
-       pas=input("Kirjutage oma parool: ")
-       if any(c.islower() for c in pas) and any(c.isupper() for c in pas) and any(c.isdigit() for c in pas) and any(c in '.,:;!_*-+()/#¤%&' for c in pas):
+       parool=input("Kirjutage oma parool: ")
+       if any(c.islower() for c in parool) and any(c.isupper() for c in parool) and any(c.isdigit() for c in parool) and any(c in '.,:;!_*-+()/#¤%&' for c in parool):
             print("Olete loonud parooli")
-            logt.append(n)
-            pas.append(str(salasona))
+            log.append(n)
+            parool.append(str(salasona))
        else:
             print("Viga!!!")
         
        
-    return logt,pas
+    return log,parool
