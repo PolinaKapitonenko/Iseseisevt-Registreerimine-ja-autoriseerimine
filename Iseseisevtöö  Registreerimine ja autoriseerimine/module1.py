@@ -43,3 +43,54 @@ def registreerimine(log:list, parool:str)->bool:
         
        
     return log,parool
+
+
+def muuda_nimi(log: list, parool: list) -> None:
+    """
+    Muutke olemasoleva kasutaja kasutajanime
+    """
+    n = input("Sisestage kasutajanimi, mille nime soovite muuta: ")
+    if n in log:
+        new_n = input("Sisestage uus kasutajanimi: ")
+        index = log.index(n)
+        log[index] = new_n
+        print(f"Kasutajanimi on muudetud. Uus nimi on {new_n}.")
+    else:
+        print("Viga!!! Kasutajanime ei leitud.")
+
+def muuda_parool(log: list, parool: list) -> None:
+    """
+    Muutke olemasoleva kasutaja parooli
+    """
+    n = input("Sisestage kasutajanimi, mille parooli soovite muuta: ")
+    if n in log:
+        index = log.index(n)
+        new_password = input("Sisestage uus parool: ")
+        parool[index] = new_password
+        print("Parool on muudetud.")
+    else:
+        print("Viga!!! Kasutajanime ei leitud.")
+
+def unustanud_parool(log: list, parool: list) -> None:
+    """
+    Resets the password of an existing user.
+    """
+    kasutaja = input("Sisestage oma kasutajanimi: ")
+    if kasutaja in log:
+        index = log.index(kasutaja)
+        uus_parool = input("Sisestage uus parool: ")
+        parool[index] = uus_parool
+        print("Teie parool on edukalt lähtestatud!")
+    else:
+        print("Sellist kasutajanime pole olemas.")
+
+def lopeta() -> None:
+    """
+    Ends the program.
+    """
+    print("Lõpetamine")
+    quit()
+
+
+        
+   
