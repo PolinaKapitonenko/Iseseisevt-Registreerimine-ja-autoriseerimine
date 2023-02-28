@@ -89,7 +89,7 @@ def lopeta() -> None:
     Ends the program.
     """
     print("Lõpetamine")
-    quit()
+    
 
 
         
