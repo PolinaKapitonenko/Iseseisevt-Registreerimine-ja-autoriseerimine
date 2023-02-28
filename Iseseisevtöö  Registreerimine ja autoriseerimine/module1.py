@@ -73,7 +73,7 @@ def muuda_parool(log: list, parool: list) -> None:
 
 def unustanud_parool(log: list, parool: list) -> None:
     """
-    Resets the password of an existing user.
+    Lähtestab olemasoleva kasutaja parooli.
     """
     kasutaja = input("Sisestage oma kasutajanimi: ")
     if kasutaja in log:
@@ -86,7 +86,7 @@ def unustanud_parool(log: list, parool: list) -> None:
 
 def lopeta() -> None:
     """
-    Ends the program.
+    Lõpetab programmi.
     """
     print("Lõpetamine")
     
