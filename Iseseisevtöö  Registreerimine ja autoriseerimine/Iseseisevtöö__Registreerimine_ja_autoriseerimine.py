@@ -17,9 +17,10 @@ while True:
         if log in log and pass_ in parool:
             print("Olete edukalt sisse loginud ")
 
-        elif print("Vale sisselogimine või parool"):
-            print("")
-
+        else:
+           print("Vale sisselogimine või parool")
+           print("")
+           break
 
     elif a=="ei":
          b=str(input("Kas soovite registreeruda? "))
