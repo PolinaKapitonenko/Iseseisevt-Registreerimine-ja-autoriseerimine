@@ -88,7 +88,7 @@ def Unustasid parooli():
 
 
 # функция выхода из системы
-def Logi välja():
+def Logivälja():
     print("Sa logisid välja.")
     
     
