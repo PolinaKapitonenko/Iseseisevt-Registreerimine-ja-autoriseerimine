@@ -17,78 +17,80 @@ def salasona(k: int)->bool:
         saladus+=choice(t_num)
     return saladus
 
-def registreerimine(log:list, parool:str)->bool:
-    """
-    Määrme reg..
-    :parem log list, pas str:Järjend salasõna numbridest
-    :rtype: bool
-    """
-    n=input("Kirjuta oma nimi: ")
-    tehe=int(input("2-Määrake oma parool, 1-Looge see juhuslikult\n "))
-
-    if tehe==1:
-        salasona=salasona(12)
-        log.append(n)
-        parool.append(salasona)
- 
-
-    elif tehe==2:
-       parool=input("Kirjutage oma parool: ")
-       if any(c.islower() for c in parool) and any(c.isupper() for c in parool) and any(c.isdigit() for c in parool) and any(c in '.,:;!_*-+()/#¤%&' for c in parool):
-            print("Olete loonud parooli")
-            log.append(n)
-            parool.append(str(salasona))
-       else:
-            print("Viga!!!")
-        
-       
-    return log,parool
-
-
-def muuda_nimi(log: list, parool: list) -> None:
-    """
-    Muutke olemasoleva kasutaja kasutajanime
-    """
-    n = input("Sisestage kasutajanimi, mille nime soovite muuta: ")
-    if n in log:
-        new_n = input("Sisestage uus kasutajanimi: ")
-        index = log.index(n)
-        log[index] = new_n
-        print(f"Kasutajanimi on muudetud. Uus nimi on {new_n}.")
+# функция регистрации пользователя
+def registerimine():
+    login = input("Sisesta oma login: ")
+    if login in logins:
+        print("See login on juba votud.")
+        return
+    salasona_valik = input("Kas sa tahad juhuslik salasone? (Y/N): ")
+    if salasona_valik.lower() == 'y':
+        password = salasona(8)
+        print(f"Sinu salasona: {password}")
     else:
-        print("Viga!!! Kasutajanime ei leitud.")
+        while True:
+            password = input("Sisesta oma salasona: ")
+            if any(char.isdigit() for char in password) and any(char.islower() for char in password) and any(char.isupper() for char in password) and any(char in string.punctuation for char in password):
+                break
+            else:
+                print("Teie parool peab sisaldama vähemalt ühte numbrit, ühte väiketähte, ühte suurtähte ja ühte erilist sümbolit.")
+    logins.append(login)
+    passwords.append(password)
+    print("Registreerimine õnnetus!")
 
-def muuda_parool(log: list, parool: list) -> None:
-    """
-    Muutke olemasoleva kasutaja parooli
-    """
-    n = input("Sisestage kasutajanimi, mille parooli soovite muuta: ")
-    if n in log:
-        index = log.index(n)
-        new_password = input("Sisestage uus parool: ")
-        parool[index] = new_password
-        print("Parool on muudetud.")
+# функция авторизации пользователя
+def autoreserimine():
+    login = input("Sisesta oma login: ")
+    if login not in logins:
+        print("See logini pole registreeritud.")
+        return
+    password = input("Sisesta oma salasona: ")
+    if password != passwords[logins.index(login)]:
+        print("Vale salasona.")
+        return
+    print("Login õnnetus!")
+
+# функция смены имени или пароля
+def muuta():
+    login = input("Sisesta oma login: ")
+    if login not in logins:
+        print("See nimi ei ole registreeritud.")
+        return
+    valik = input("Kas soovite muuta oma nime või parooli? (login/password): ")
+    if valik.lower() == 'login':
+        new_login = input("Sisesta uue login: ")
+        if new_login in logins:
+            print("See login on juba võtud.")
+            return
+        logins[logins.index(login)] = new_login
+        print("Login muudatus õnnetus.")
+    elif valik.lower() == 'password':
+        while True:
+            new_password = input("Sisesta uue salasone: ")
+            if any(char.isdigit() for char in new_password) and any(char.islower() for char in new_password) and any(char.isupper() for char in new_password) and any(char in string.punctuation for char in new_password):
+                break
+            else:
+                print("Teie parool peab sisaldama vähemalt ühte numbrit, ühte väiketähte, ühte suurtähte ja ühte erilist sümbolit.")
+        passwords[logins.index(login)] = new_password
+        print("Salasone muudatus õnnetus.")
     else:
-        print("Viga!!! Kasutajanime ei leitud.")
+        print("Viga.")
 
-def unustanud_parool(log: list, parool: list) -> None:
-    """
-    Lähtestab olemasoleva kasutaja parooli.
-    """
-    kasutaja = input("Sisestage oma kasutajanimi: ")
-    if kasutaja in log:
-        index = log.index(kasutaja)
-        uus_parool = input("Sisestage uus parool: ")
-        parool[index] = uus_parool
-        print("Teie parool on edukalt lähtestatud!")
-    else:
-        print("Sellist kasutajanime pole olemas.")
+# функция восстановления забытого пароля
+def Unustasid parooli():
+    login = input("Наберите свой логин: ")
+    if login not in logins:
+        print("Вы не зарегистрированы.")
+        return
+    new_password = salasona(8)
+    passwords[logins.index(login)] = new_password
+    print(f"Sinu uus parool on: {new_password}")
 
-def lopeta() -> None:
-    """
-    Lõpetab programmi.
-    """
-    print("Lõpetamine")
+
+# функция выхода из системы
+def Logi välja():
+    print("Sa logisid välja.")
+    
     
 
 
