@@ -17,13 +17,13 @@ while True:
     if valik == '1':
         registerimine()
     elif valik == '2':
-        authorize()
+        autoreserimine()
     elif valik == '3':
         muuta()
     elif valik == '4':
         Unustasid()
     elif valik == '5':
-        Logi välja()
+        Logivälja()
         exit()
    
 
