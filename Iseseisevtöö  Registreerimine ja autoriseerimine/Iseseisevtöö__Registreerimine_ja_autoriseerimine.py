@@ -15,15 +15,15 @@ while True:
     print("5. Logi välja")
     valik = input("Sisesta number (1-5): ")
     if valik == '1':
-        register()
+        registerimine()
     elif valik == '2':
         authorize()
     elif valik == '3':
-        change()
+        muuta()
     elif valik == '4':
-        forgotpassword()
+        Unustasid()
     elif valik == '5':
-        logout()
+        Logi välja()
         exit()
    
 
