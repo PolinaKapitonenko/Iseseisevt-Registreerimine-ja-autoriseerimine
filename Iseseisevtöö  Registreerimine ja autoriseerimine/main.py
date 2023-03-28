@@ -1,10 +1,4 @@
-﻿from math import*
-from random import*
-from module1  import*
-
-
-log=["User1", "User2"]
-parool=["s1mple", "juppi"]
+﻿from MyModule import registreerimine, autoriseerimine, muuda, unustasin_parool, logout
 
 while True:
     print("Valige:")
@@ -15,16 +9,15 @@ while True:
     print("5. Logi välja")
     valik = input("Sisesta number (1-5): ")
     if valik == '1':
-        registerimine()
+        registreerimine()
     elif valik == '2':
-        autoreserimine()
+        authorize()
     elif valik == '3':
-        muuta()
+        change()
     elif valik == '4':
-        Unustasid()
+        unustasin_parool()
     elif valik == '5':
-        Logivälja()
+        logout()
         exit()
-   
-
-         
+    else:
+        print("Viga! Palun andke number 1st kuni 5ni.")
