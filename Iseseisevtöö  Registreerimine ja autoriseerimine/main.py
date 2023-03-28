@@ -1,19 +1,19 @@
 ﻿from MyModule import registreerimine, autoriseerimine, muuda, unustasin_parool, logout
 
 while True:
-    print("Valige:")
-    print("1. Registreerima")
-    print("2. Logi sisse")
-    print("3. Muudata login voi salasõna")
-    print("4. Unustasid salasone")
-    print("5. Logi välja")
-    valik = input("Sisesta number (1-5): ")
+    print("Выбирите:")
+    print("1. Регистрация")
+    print("2. Авторизоваться")
+    print("3. Сменить логин или пароль")
+    print("4. Вы забыли свой пароль")
+    print("5. Выйти")
+    valik = input("Введите число (1-5): ")
     if valik == '1':
         registreerimine()
     elif valik == '2':
-        authorize()
+        autoriseerimine()
     elif valik == '3':
-        change()
+        muuda()
     elif valik == '4':
         unustasin_parool()
     elif valik == '5':

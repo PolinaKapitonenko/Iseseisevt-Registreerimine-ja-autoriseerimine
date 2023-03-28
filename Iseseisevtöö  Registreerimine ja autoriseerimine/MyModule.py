@@ -20,64 +20,64 @@ def salasona(k: int):
 
 # функция регистрации пользователя
 def registreerimine():
-    login = input("Sisesta oma login: ")
+    login = input("Введите ваш логин: ")
     if login in loginiid:
-        print("See login on juba votud.")
+        print("Этот логин уже удален.")
         return
-    salasona_valik = input("Kas sa tahad juhuslik salasone? (Y/N): ")
+    salasona_valik = input("Вы хотите случайный пароль? (Y/N): ")
     if salasona_valik.lower() == 'y':
         parool = salasona(8)
-        print(f"Sinu salasona: {parool}")
+        print(f"Ваш пароль: {parool}")
     else:
         while True:
-            parool = input("Sisesta oma salasona: ")
+            parool = input("Введите ваш пароль: ")
             if any(char.isdigit() for char in parool) and any(char.islower() for char in parool) and any(char.isupper() for char in parool) and any(char in string.punctuation for char in parool):
                 break
             else:
-                print("Teie parool peab sisaldama vähemalt ühte numbrit, ühte väiketähte, ühte suurtähte ja ühte erilist sümbolit.")
+                print("Ваш пароль должен содержать как минимум одну цифру, одну строчную букву, одну прописную букву и один специальный символ..")
     loginiid.append(login)
     paroolid.append(parool)
-    print("Registreerimine õnnetus!")
+    print("Регистрация прошла успешно!")
 
 
 # функция авторизации пользователя
 def autoriseerimine():
-    login = input("Sisesta oma login: ")
+    login = input("Введите ваш логин: ")
     if login not in loginiid:
-        print("See logini pole registreeritud.")
+        print("Этот логин еще не зарегистрирован.")
         return
-    parool = input("Sisesta oma salasona: ")
+    parool = input("Введите ваш пароль: ")
     if parool != paroolid[loginiid.index(login)]:
-        print("Vale salasona.")
+        print("Неправильный пароль.")
         return
-    print("Login õnnetus!")
+    print("Авторизация прошла успешно!")
 
 
 # функция смены имени или пароля
 def muuda():
-    login = input("Sisesta oma login: ")
+    login = input("Введите ваш логин: ")
     if login not in loginiid:
-        print("See nimi ei ole registreeritud.")
+        print("Это имя не зарегистрировано.")
         return
-    valik = input("Kas soovite muuta oma nime või parooli? (login/password): ")
-    if valik.lower() == 'login':
-        uus_login = input("Sisesta uue login: ")
+    valik = input("Вы хотите изменить свое имя или пароль? (Логин/Пароль): ")
+    if valik.lower() == 'логин':
+        uus_login = input("Введите новый логин: ")
         if uus_login in loginiid:
-            print("See login on juba võtud.")
+            print("Такой логин уже занят.")
             return
         loginiid[loginiid.index(login)] = uus_login
-        print("Login muudatus õnnetus.")
-    elif valik.lower() == 'password':
+        print("Успешно со сменой логина.")
+    elif valik.lower() == 'пароль':
         while True:
-            uus_parool = input("Sisesta uue salasone: ")
+            uus_parool = input("Введите новый пароль: ")
             if any(char.isdigit() for char in uus_parool) and any(char.islower() for char in uus_parool) and any(char.isupper() for char in uus_parool) and any(char in string.punctuation for char in uus_parool):
                 break
             else:
-                print("Teie parool peab sisaldama vähemalt ühte numbrit, ühte väiketähte, ühte suurtähte ja ühte erilist sümbolit.")
+                print("Ваш пароль должен содержать как минимум одну цифру, одну строчную букву, одну прописную букву и один специальный символ.")
         paroolid[loginiid.index(login)] = uus_parool
-        print("Salasone muudatus õnnetus.")
+        print("Успешно со сменой логина.")
     else:
-        print("Viga.")
+        print("Ошибка.")
 
 
 # функция восстановления забытого пароля
@@ -88,10 +88,10 @@ def unustasin_parool():
         return
     uus_parool = salasona(8)
     paroolid[loginiid.index(login)] = uus_parool
-    print(f"Sinu uus parool on: {uus_parool}")
+    print(f"Ваш новый пароль: {uus_parool}")
 
 
 # функция выхода из системы
 def logout():
-    print("Sa logisid välja.")
+    print("Выйти из системы.")
     
