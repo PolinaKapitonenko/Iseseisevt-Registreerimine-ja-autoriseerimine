@@ -22,7 +22,7 @@ def salasona(k: int):
 def registreerimine():
     login = input("Введите ваш логин: ")
     if login in loginiid:
-        print("Этот логин уже удален.")
+        print("Этот логин уже занят.")
         return
     salasona_valik = input("Вы хотите случайный пароль? (Y/N): ")
     if salasona_valik.lower() == 'y':
@@ -74,6 +74,7 @@ def muuda():
                 break
             else:
                 print("Ваш пароль должен содержать как минимум одну цифру, одну строчную букву, одну прописную букву и один специальный символ.")
+                return
         paroolid[loginiid.index(login)] = uus_parool
         print("Успешно со сменой логина.")
     else:
